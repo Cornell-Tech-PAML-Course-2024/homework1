@@ -1,24 +1,24 @@
 # Practical Applications in Machine Learning - Homework 1
 
-The goal of Homework 1 assignment is to build your first end-to-end Machine Learning (ML) pipeline using public datasets and by creating your own datasets. The <b>learning outcomes</b> for this assignment are: 
-
-* Build framework for end-to-end ML pipeline in Streamlit. Create your first web application! 
-* Develop web application that walks users through steps of ML pipeline starting with data visualization and preprocessing steps. 
+Homework 1: The goal of this assignment is to perform data preprocessing on the California Housing dataset. The learning outcomes for this assignment are:
+- Learn when to use Standardization vs Normalization
+- Learn to handle missing data
+- Apply feature encoding to appropriate data types
+- Apply outlier detection methods using Interquartile and standard deviation methods
+- Create new features using feature engineering
+- Compute correlation coefficients and interpret the results
 
 This assignment is contains two parts:
 
-1. <b>End-to-End ML Pipeline</b>: Many ML projects are NOT used in production or NOT easily used by others including ML engineers interested in exploring prior ML models, testing their models on new datasets, and helping users explore ML models. To address this challenge, the goal of this assignment is to implement a front- and back-end ML project, focusing on the dataset exploration and preprocessing steps. The hope is that the homework assignments help students showcase ML skills in building end-to-end ML pipelines and deploying ML web applications for users which we build on in future assignments. 
+- <b>Programming:<b> Write a web application that enables users to upload a dataset, visualize the data, and perform preprocessing steps to gain useful insights for ML.
+- <b>Online Assessment:<b> Respond to reflection questions to assess your understanding of preprocessing steps. 
 
-2. <b>Dataset Curation (In-Class Activity)</b>: It is often challenging to collect datasets when none exists in your problem domain. Thus, it is important to understand how to curate new datasets and explore existing methodologies for data collection. Part II of HW1 focuses on how to collect datasets, annotate the data, and evaluate the annotations in preparation for ML tasks.
-
-HW1 serves as an outline for the remaining assignments in the course, building end-to-end ML pipelines and deploying useful web applications using those models. This assignment in particular focuses on the data exploration and preprocess. 
-
-* <b>Due</b>:  Friday February 17, 2023 at 11:00PM 
+* <b>Due</b>:  February 21, 2024 at 11:00PM 
 * <b>What to turn in</b>: Submit responses on GitHub AutoGrader
-* <b>Assignment Type</b>: Individual
+* <b>Assignment Type</b>: Groups (Up to 3)
 * <b>Time Estimate</b>: 9 Hours
-* <b>Submit code via GitHub</b>: https://classroom.github.com/a/fiL30jIe
-* <b>Submit Reflection Assessment</b> via Canvas (multiple choice, 5 questions)
+* <b>Submit code via GitHub
+* <b>Submit Reflection Assessment</b> via Canvas (9 questions)
 
 <p align="center"> 
 <img src="./images/explore_data_hw1.gif" width="70%"> 
@@ -42,15 +42,15 @@ pip install numpy
 pip install pandas
 pip install plotly
 pip install itertools
+pip install sklearn-learn
 ```
 
-* preprocess_data.ipynb: This is the example from the textbook on predicting housing prices. We will use this notebook to create an online ML end-to-end pipeline. We will focus on data collction and preprocessing steps.
+* homework1.ipynb: This is the example from the textbook on predicting housing prices. We will use this notebook to create an online ML end-to-end pipeline. We will focus on data collction and preprocessing steps.
 * preprocess_data.py: HW1 assignment template using streamlit for web application UI and workflow of activties. 
 * pages/*.py files: Contains code to explore data, preprocess it and prepare it for ML. It includes checkpoints for the homework assignment.
 * datasets: folder that conatins the dataset used for HW1 in 'housing/housing.csv'
 * notebooks: contains example notebooks for HW1
 * test_homework1.py: contains Github autograder functions
-* images/: contains images for readme
 
 # 1. Build End-to-End ML Pipeline
 
@@ -72,9 +72,9 @@ This assignment involves testing the end-to-end pipeline in a web application us
 * ocean_proximity - distance from the ocean
 * median_house_value - median house value
 
-## 1.2 Explore dataset
+## 1.2 Explore dataset (see HW1 document)
 
-## 1.3 Preprocess data
+## 1.3 Preprocess data (see HW1 document)
 
 ## 1.4 Testing Code with Github AutoGrader
 
