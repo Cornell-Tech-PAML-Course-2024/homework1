@@ -17,7 +17,7 @@ This assignment is contains two parts:
 * <b>What to turn in</b>: Submit responses on GitHub AutoGrader
 * <b>Assignment Type</b>: Groups (Up to 3)
 * <b>Time Estimate</b>: 9 Hours
-* <b>Submit code via GitHub
+* <b>Submit code via GitHub: https://classroom.github.com/a/vDvDW2Rp
 * <b>Submit Reflection Assessment</b> via Canvas (9 questions)
 
 <p align="center"> 

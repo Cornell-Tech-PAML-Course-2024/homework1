@@ -30,6 +30,10 @@ st.markdown('### Import Dataset')
 # Checkpoint 1
 def load_dataset(filepath):
     """
+    This function uses the filepath (string) a .csv file locally on a computer 
+    to import a dataset with pandas read_csv() function. Then, store the 
+    dataset in session_state.
+
     Input: data is the filename or path to file (string); open file using pd.read_csv
     Output: pandas dataframe df
     """
@@ -39,11 +43,12 @@ def load_dataset(filepath):
 # Helper Function
 def display_features(df,feature_lookup):
     """
-    This function displayes feature names and descriptions (from feature_lookup).
+    This function displayes feature names and descriptions (from feature_lookup and dataset columns).
     
     Inputs:
     - df (pandas.DataFrame): The input DataFrame to be whose features to be displayed.
     - feature_lookup (dict): A dictionary containing the descriptions for the features.
+    
     Outputs: None
     """
     for idx, col in enumerate(df.columns):
@@ -92,18 +97,24 @@ def summarize_missing_data(df, top_n=3):
 # Checkpoint 4
 def remove_features(df,removed_features):
     """
+    Remove the features in removed_features (list) from the input pandas dataframe df. 
+
     Input: df is dataset in pandas dataframe
-    Output: Remove the features in removed_features (list) from df
+    Output: pandas dataframe df
     """
     return df
 
 # Checkpoint 5
 def impute_dataset(df, impute_method):
     """
+    Impute the dataset df with imputation method impute_method 
+    including mean, median, zero values or drop Nan values in 
+    the dataset (all numeric and string columns).
+
     Input: 
     - df is dataset in pandas dataframe
     - impute_method = {'Zero', 'Mean', 'Median','DropNans'}
-    Output: 
+    Output: pandas dataframe df
     """
     return df
 
@@ -136,6 +147,8 @@ def integer_encode_feature(df, feature):
 # Checkpoint 8
 def scale_features(df, features, scaling_method): 
     """
+    Use the scaling_method to transform numerical features in the dataset df. 
+
     Input: 
         - Features X
         - Scaling method is a string; Options include {'Standardarization', 'Normalization', 'Log'}
@@ -149,7 +162,8 @@ def scale_features(df, features, scaling_method):
 # Checkpoint - 9
 def create_feature(df, math_select, math_feature_select, new_feature_name):
     """
-    Create a new feature and update the pandas dataframe
+    Create a new feature with name new_feature_name in dataset df with the 
+    mathematical operation math_select (string) on features math_feature_select (list). 
 
     Input: 
         - df: the pandas dataframe
@@ -181,8 +195,17 @@ def remove_outliers(df, feature, outlier_removal_method=None):
 ## Checkpoint - 11
 def compute_descriptive_stats(df, stats_feature_select, stats_select):
     """
+    Compute descriptive statistics stats_select on a feature stats_feature_select 
+    in df. Statistics stats_select include mean, median, max, and min. Return 
+    the results in an output string out_str and dictionary out_dict (dictionary).
+
     Input: 
+    - df: the pandas dataframe
+    - stats_feature_select: list of feaures to computer statistics on
+    - stats_select: list of mathematical opations
     Output: 
+    - output_str: string used to display feature statistics
+    - out_dict: dictionary of feature statistics
     """
     output_str=''
     out_dict = {
@@ -212,14 +235,8 @@ def compute_correlation(df, features):
 
 ###################### FETCH DATASET #######################
 
+# Use file_uploader to upload the dataset locally
 df=None
-
-filename = st.file_uploader('Upload a Dataset', type=['csv', 'txt'])
-if('house_df' in st.session_state):
-    df = st.session_state['house_df']
-else:
-    if(filename):
-        df = load_dataset(filename)
 
 ######################### MAIN BODY #########################
 
