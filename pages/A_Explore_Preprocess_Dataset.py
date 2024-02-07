@@ -250,7 +250,6 @@ if df is not None:
     
     # Display dataframe as table
     st.dataframe(df)
-    X = df.copy()
 
     ###################### VISUALIZE DATASET #######################
     st.markdown('### 2. Visualize Features')
@@ -322,7 +321,6 @@ if df is not None:
         except Exception as e:
             print(e)
 
-    #st.sidebar.button("Reset", type="primary")
     if st.sidebar.button('Clip feature from %.2f to %.2f' % (side_bar_data[0][0], side_bar_data[0][1])):
         df[x_values+'_clipped'] = df[x_values]
         df[df[x_values+'_clipped']>side_bar_data[0][1]] = 0
