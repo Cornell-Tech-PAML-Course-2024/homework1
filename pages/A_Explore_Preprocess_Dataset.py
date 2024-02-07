@@ -338,7 +338,6 @@ if df is not None:
     st.markdown('## 3. View initial data with missing values or invalid inputs')
     st.dataframe(df)
 
-    X = df.copy()
     numeric_columns = list(df.select_dtypes(['float','int']).columns)
 
     # Show summary of missing values including 
@@ -506,7 +505,6 @@ if df is not None:
     st.markdown("### 11. Correlation Analysis")
 
     # Collect features for correlation analysis using multiselect
-    #df = st.session_state['house_df']
     numeric_columns = list(df.select_dtypes(['float','int']).columns)
 
     select_features_for_correlation = st.multiselect(

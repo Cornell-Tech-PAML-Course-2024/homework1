@@ -13,11 +13,11 @@ This assignment is contains two parts:
 - <b>Programming:<b> Write a web application that enables users to upload a dataset, visualize the data, and perform preprocessing steps to gain useful insights for ML.
 - <b>Online Assessment:<b> Respond to reflection questions to assess your understanding of preprocessing steps. 
 
-* <b>Due</b>:  February 21, 2024 at 11:00PM 
+* <b>Due</b>: February 21, 2024 at 11:00PM 
 * <b>What to turn in</b>: Submit responses on GitHub AutoGrader
 * <b>Assignment Type</b>: Groups (Up to 3)
 * <b>Time Estimate</b>: 9 Hours
-* <b>Submit code via GitHub: https://classroom.github.com/a/vDvDW2Rp
+* <b>Submit code via GitHub
 * <b>Submit Reflection Assessment</b> via Canvas (9 questions)
 
 <p align="center"> 
@@ -45,16 +45,11 @@ pip install itertools
 pip install sklearn-learn
 ```
 
-* homework1.ipynb: This is the example from the textbook on predicting housing prices. We will use this notebook to create an online ML end-to-end pipeline. We will focus on data collction and preprocessing steps.
 * preprocess_data.py: HW1 assignment template using streamlit for web application UI and workflow of activties. 
 * pages/*.py files: Contains code to explore data, preprocess it and prepare it for ML. It includes checkpoints for the homework assignment.
 * datasets: folder that conatins the dataset used for HW1 in 'housing/housing.csv'
-* notebooks: contains example notebooks for HW1
+* notebooks: jupyter notebook on preprocessing steps.
 * test_homework1.py: contains Github autograder functions
-
-# 1. Build End-to-End ML Pipeline
-
-The first part of HW1 focuses on ‘Building an End-to-End ML Pipeline’ which consists of creating modules that perform the following tasks: exploring and visualizing the data to gain insights and preprocess and prepare data for machine learning algorithms.
 
 ## 1.1 California Housing Dataset
 
@@ -77,13 +72,9 @@ This assignment involves testing the end-to-end pipeline in a web application us
 ## 1.3 Preprocess data (see HW1 document)
 
 ## 1.4 Testing Code with Github AutoGrader
-
-* Create GitHub Account (if not already done)
-
-* Submit an email address to the teaching staff to connect your account for grading: https://forms.gle/7m7xAKcTv6DdE1E98
-
-* Github Submission: https://classroom.github.com/a/fiL30jIe
-
+```
+streamlit run preprocess_data.py
+```
 ## Test code using pytest by running the test_homework1.py file (see below). There are 6 test cases, one for each checkpoint above.
 ```
 pytest
@@ -98,7 +89,7 @@ streamlit run preprocess_data.py
 
 # 2. Reflection Assessment
 
-Submit on Gradescope.
+Submit on Canvas.
 
 # Further Issues and questions ❓
 
@@ -106,5 +97,5 @@ If you have issues or questions, don't hesitate to contact the teaching team:
 
 * Angelique Taylor (amt298@cornell.edu) - Instructor
 * Tauhid Tanjim (tt485@cornell.edu) - Teaching Assistant
-* Jinzhao Kank (jk2575@cornell.edu) - Grader
-* Kathryn Gdula (kg435@cornell.edu) - Grader
+* Olga Esperanza Acuna Leanos (oea9@cornell.edu) - Grader
+* Kexin Cheng (kc2248@cornell.edu) - Grader
