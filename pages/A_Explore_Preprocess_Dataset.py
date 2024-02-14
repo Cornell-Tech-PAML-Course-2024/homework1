@@ -38,6 +38,8 @@ def load_dataset(filepath):
     Output: pandas dataframe df
     """
     data=None
+    data = pd.read_csv(filepath)
+    st.session_state['house_df'] = data
     return data
 
 # Helper Function
@@ -71,6 +73,27 @@ def sidebar_filter(df, chart_type, x=None, y=None):
         - list of sidebar filters on features
     """
     side_bar_data = []
+    select_columns = []
+    if (x is not None):
+        select_columns.append(x)
+    if (y is not None):
+        select_columns.append(y)
+    if (x is None and y is None):
+        select_columns = list(df.select_dtypes(include='number').columns)
+
+    for idx, feature in enumerate(select_columns):
+        try:
+            f = st.sidebar.slider(
+                str(feature),
+                float(df[str(feature)].min()),
+                float(df[str(feature)].max()),
+                (float(df[str(feature)].min()), float(df[str(feature)].max())),
+                key=chart_type+str(idx)
+            )
+        except Exception as e:
+            print(e)
+        side_bar_data.append(f)
+
     return side_bar_data
 
 # Checkpoint 3
@@ -92,6 +115,26 @@ def summarize_missing_data(df, top_n=3):
                 'average_per_category': 0,
                 'total_missing_values': 0,
                 'top_missing_categories': []}
+    
+    # Used for top categories with missing data
+    missing_column_counts = df[df.columns[df.isnull().any()]].isnull().sum()
+    max_idxs = np.argsort(missing_column_counts.to_numpy())[::-1][:top_n]
+
+    # Compute missing statistics
+    out_dict['num_categories'] = df.isna().any(axis=0).sum()
+    out_dict['average_per_category'] = df.isna().sum().sum()/len(df.columns)
+    out_dict['total_missing_values'] = df.isna().sum().sum()
+    out_dict['top_missing_categories'] = df.columns[max_idxs[:top_n]].to_numpy()
+
+    # Display missing statistics
+    st.markdown('Number of categories with missing values: {0:.2f}'.format(
+        out_dict['num_categories']))
+    st.markdown('Average number of missing values per category: {0:.2f}'.format(
+        out_dict['average_per_category']))
+    st.markdown('Total number of missing values: {0:.2f}'.format(
+        out_dict['total_missing_values']))
+    st.markdown('Top {} categories with most missing values: {}'.format(
+        top_n, out_dict['top_missing_categories']))
     return out_dict
 
 # Checkpoint 4
@@ -129,6 +172,8 @@ def one_hot_encode_feature(df, feature):
     Output: 
         - df: dataframe with one-hot-encoded feature
     """
+    df = pd.concat([df, pd.get_dummies(df[feature], drop_first=True)], axis=1)
+    df.drop(labels=feature, axis=1, inplace=True)
     return df
 
 # Checkpoint 7
@@ -238,6 +283,12 @@ def compute_correlation(df, features):
 # Use file_uploader to upload the dataset locally
 df=None
 
+filename = st.file_uploader('Upload a Dataset', type=['csv', 'txt'])
+if('house_df' in st.session_state):
+    df = st.session_state['house_df']
+else:
+    if(filename):
+        df = load_dataset(filename)
 ######################### MAIN BODY #########################
 
 ######################### EXPLORE DATASET #########################
