@@ -155,8 +155,8 @@ def test_remove_outliers():
     dummy_data = {'feature': [-1,-99, 2, 3, 4, 5,5,8,9,100,88]}
     df = pd.DataFrame(dummy_data)
     cleaned_df, lower_bound, upper_bound = A_Explore_Preprocess_Dataset.remove_outliers(df, 'feature', 'IQR')
-    print(cleaned_df, lower_bound, upper_bound)
-    assert not np.any(np.isin([100, 88, -99], cleaned_df['feature'].values))
+    # print(cleaned_df, lower_bound, upper_bound)
+    assert not cleaned_df['feature'].isin([88, -99, 100]).any()
     assert lower_bound, upper_bound== (-6.5, 17.5)    
 
 ################# Checkpoint 11 #################
